@@ -16,7 +16,7 @@ class Graph {
 
     void addEdge(ll x, ll y) {
         adj[x].push_back(y);
-        // adj[y].push_back(x);
+        adj[y].push_back(x);
     }
 
     bool dfs(ll u, ll v, vector<bool>& visited, vector<ll>& path) {
