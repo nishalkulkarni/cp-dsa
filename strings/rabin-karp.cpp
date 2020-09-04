@@ -4,7 +4,7 @@ using namespace std;
 using ll = long long;
 
 // O(|t|+|s|)
-vector<int> robin_karp(string s, string t){
+vector<int> rabin_karp(string s, string t){
     ll p = 31,m = 1e9+9, S = s.size(), T = t.size();
 
     vector<ll> p_pow(max(S,T));
