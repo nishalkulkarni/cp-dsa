@@ -55,14 +55,14 @@ class MinHeap {
         }
     }
 
-    void insertHeap(pair<ll, ll> ele) {
+    void insertElement(pair<ll, ll> ele) {
         ll pos = min_heap.size();
         min_heap.push_back(ele);
         ele_pos[ele.first] = pos;
         heapify(pos);
     }
 
-    void deleteHeap(ll pos) {
+    void deleteElement(ll pos) {
         ll last_pos = min_heap.size()-1;
 
         ele_pos.erase(min_heap[pos].first);
@@ -106,7 +106,6 @@ class Graph {
         visited[0] = true;
 
         MinHeap mh;
-        ll last_pos = -1;
 
         vector<ll> key(V, INT_MAX);
         for (auto i : adj[0]) {
@@ -114,12 +113,12 @@ class Graph {
         }
 
         for (int i = 1; i < V; i++) {
-            mh.insertHeap(make_pair(i, key[i]));
+            mh.insertElement(make_pair(i, key[i]));
         }
 
         while (mh.heapSize() !=0) {
             pair<ll, ll> top = mh.top();
-            mh.deleteHeap(0);
+            mh.deleteElement(0);
 
             cout<<"Vertex picked - "<<top.first<<" with edge weight - "<<top.second<<endl;
 
@@ -129,9 +128,9 @@ class Graph {
 
             for (auto i : adj[top.first]) {
                 if (!visited[i.first]) {
-                    mh.deleteHeap(mh.getElementPos(i.first));
+                    mh.deleteElement(mh.getElementPos(i.first));
                     key[i.first] = min(key[i.first], i.second);
-                    mh.insertHeap(make_pair(i.first, key[i.first]));
+                    mh.insertElement(make_pair(i.first, key[i.first]));
                 }
             }
         }
